@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>First AI Boot Camp Project</title>
+  <meta name="description" content="Landing page for the First AI Boot Camp project.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:,">
+  <style>
+    :root { --bg: #0b1020; --text: #e8eefc; --muted: #9fb3c8; --brand: #7c5cff; --brand-2: #22d3ee; --card: #121836; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { margin: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; color: var(--text); background: radial-gradient(1200px 600px at 80% -10%, rgba(124,92,255,.25), transparent 60%), radial-gradient(800px 400px at -10% 10%, rgba(34,211,238,.25), transparent 50%), var(--bg); line-height: 1.6; }
+    a { color: inherit; text-decoration: none; }
+    header { position: sticky; top: 0; backdrop-filter: blur(8px); background: rgba(11,16,32,.7); border-bottom: 1px solid rgba(255,255,255,.08); }
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
+    .brand { font-weight: 700; letter-spacing: .2px; display: flex; align-items: center; gap: 10px; }
+    .brand-badge { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--brand), var(--brand-2)); display: inline-block; }
+    nav ul { display: flex; gap: 18px; list-style: none; padding: 0; margin: 0; }
+    nav a { padding: 8px 10px; border-radius: 8px; color: var(--muted); }
+    nav a:hover { background: rgba(255,255,255,.06); color: var(--text); }
+    .hero { padding: 80px 0 40px; text-align: center; }
+    .hero h1 { font-size: clamp(32px, 6vw, 56px); line-height: 1.1; margin: 10px 0 12px; }
+    .hero p { font-size: clamp(16px, 2.9vw, 20px); color: var(--muted); margin: 0 auto 22px; max-width: 720px; }
+    .cta { display: inline-flex; gap: 10px; align-items: center; border: 1px solid rgba(255,255,255,.18); background: linear-gradient(135deg, rgba(124,92,255,.25), rgba(34,211,238,.2)); color: var(--text); padding: 12px 18px; border-radius: 12px; font-weight: 600; box-shadow: 0 8px 24px rgba(0,0,0,.28); }
+    .cta:hover { transform: translateY(-1px); }
+    .section { padding: 64px 0; }
+    .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
+    .card { background: rgba(18,24,54,.9); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; padding: 18px; }
+    .card h3 { margin: 4px 0 8px; font-size: 20px; }
+    .muted { color: var(--muted); }
+    .footer { padding: 28px 0 48px; color: var(--muted); font-size: 14px; }
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .nav { gap: 10px; } }
+    @media (prefers-reduced-motion: reduce) { .cta { transition: none; } }
+    :focus-visible { outline: 2px solid var(--brand-2); outline-offset: 2px; border-radius: 8px; }
+    .skip-link { position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    .skip-link:focus { position: static; width: auto; height: auto; padding: 8px 12px; background: var(--brand); color: white; border-radius: 8px; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+    /* Video block */
+    .video-section { padding: 48px 0 32px; }
+    .video-frame { width: 100%; aspect-ratio: 16 / 9; background: rgba(18,24,54,.9); border: 2px solid rgba(255,255,255,.12); border-radius: 16px; display: grid; place-items: center; color: var(--muted); font-size: clamp(18px, 2.8vw, 22px); box-shadow: 0 12px 32px rgba(0,0,0,.35); }
+
+    /* Split content section */
+    .split { display: grid; grid-template-columns: 1.2fr .8fr; align-items: start; gap: 24px; padding: 32px 0 64px; border-top: 1px solid rgba(255,255,255,.08); }
+    .copy h2 { margin: 0 0 10px; font-size: 26px; }
+    .copy p { margin: 12px 0; color: var(--muted); max-width: 60ch; }
+    .tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .tile { background: rgba(18,24,54,.9); border: 1px solid rgba(255,255,255,.12); border-radius: 12px; min-height: 120px; }
+    .tile.large { grid-column: 1 / -1; min-height: 150px; }
+
+    @media (max-width: 900px) { .grid { grid-template-columns: 1fr 1fr; } .split { grid-template-columns: 1fr; } }
+    @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } .nav { gap: 10px; } .tiles { grid-template-columns: 1fr 1fr; } }
+  </style>
+  <!-- Open Graph (optional) -->
+  <meta property="og:title" content="First AI Boot Camp Project">
+  <meta property="og:description" content="A clean, modern landing page scaffold to get started fast.">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header>
+    <div class="container nav" role="navigation" aria-label="Main">
+      <div class="brand">
+        <span class="brand-badge" aria-hidden="true"></span>
+        <a href="/">First AI Boot Camp</a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact" class="cta">Get Started</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="container">
+    <section class="video-section" aria-labelledby="video-title">
+      <h2 id="video-title" class="sr-only">Featured video</h2>
+      <div class="video-frame">Video</div>
+    </section>
+
+    <section class="split" aria-labelledby="content-title">
+      <div class="copy">
+        <h2 id="content-title">Your AI project, clearly explained</h2>
+        <p>Concise value prop copy that introduces what the project does.</p>
+        <p>Short supporting line that explains the key benefit or outcome.</p>
+        <p>Another brief line that builds trust or sets expectations.</p>
+      </div>
+      <div class="tiles" aria-label="Highlights">
+        <div class="tile" aria-hidden="true"></div>
+        <div class="tile" aria-hidden="true"></div>
+        <div class="tile large" aria-hidden="true"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">© <span id="year"></span> First AI Boot Camp Project</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
+
+
